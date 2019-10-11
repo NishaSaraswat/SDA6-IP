@@ -8,8 +8,8 @@ import java.util.Date;
 
 public class ToDoList {
     private static Scanner scanner = new Scanner(System.in);
-    private static TaskList nTask = new TaskList();
-
+    private static Task myList = new Task();
+    private static TaskList addTask = new TaskList();
 
 
     public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class ToDoList {
                     printMenu();
                     break;
                 case 1:
-                    nTask.printList();
+                    addTask.printList();
                     break;
                 case 2:
                     addList();
@@ -42,7 +42,7 @@ public class ToDoList {
                     break;
                 case 6:
                     quit = true;
-                    nTask.printList();
+                    addTask.printList();
                     System.out.println("\t\t\tWelcome back to main Menu:");
                     System.out.println("\t\t**********************************'");
                     printMenu();
@@ -80,9 +80,15 @@ public class ToDoList {
     }
 
     public static void addList() {
-        System.out.print("Add Task Title :"+"Enter project:" + "Enter date:");
-        nTask.addList(scanner.nextLine(),scanner.nextLine(),LocalDate.parse(scanner.nextLine()));
-
+        System.out.print("Add Task Title :");
+        myList.setTitle(scanner.nextLine());
+        System.out.print("Enter project:");
+        myList.setpProject(scanner.nextLine());
+        myList.getProject();
+        addTask.addList(myList.getTitle(),myList.getProject());
+        //System.out.print("Enter Date:");
+        //myList.setdDate(LocalDate.parse(scanner.nextLine()));
+        //myList.getLocalDate();
 
     }
     public static void editTask() {
@@ -91,19 +97,18 @@ public class ToDoList {
         scanner.nextLine();
         System.out.println("Enter new task:");
         String newTask = scanner.nextLine();
-        nTask.editTask(taskNo - 1, newTask);
-
+        addTask.editTask(taskNo - 1, newTask);
     }
     public static void removeTask() {
         System.out.println("Enter Task you want to remove:");
         int taskNo = scanner.nextInt();
         scanner.nextLine();
-        nTask.removeTask(taskNo);
+        addTask.removeTask(taskNo);
     }
     public static void searchTask() {
         System.out.println("Task title to search for:");
         String sTask = scanner.nextLine();
-        if (nTask.searchTask(sTask) != null) {
+        if (addTask.searchTask(sTask) != null) {
             System.out.println("Found " + sTask + " in your list");
         } else {
             System.out.println(sTask + " is not in the list");
