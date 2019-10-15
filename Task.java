@@ -2,41 +2,48 @@ package com.company;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+
 public class Task implements Serializable {
 
-    private String tTitle;
-    private String pProject;
-    //private LocalDate dDate;
+    private String taskTitle;
+    private String projectType;
+    private LocalDate dueDate;
+
 
     Task(){
 
     }
-    public Task(String tTitle, String pProject) {
+    public Task(String taskTitle, String projectType, LocalDate dueDate) {
 
-        this.tTitle = tTitle;
-        this.pProject = pProject;
-        //this.dDate = dDate;
+        this.taskTitle = taskTitle;
+        this.projectType = projectType;
+        this.dueDate = dueDate;
+
     }
     public String getTitle() {
-        return tTitle;
+        return taskTitle;
     }
     public void setTitle(String tTitle){
-        this.tTitle = tTitle;
+        this.taskTitle = tTitle;
 
     }
     public String getProject() {
-        return pProject;
+        return projectType;
     }
     public void setpProject(String pProject) {
-        this.pProject= pProject;
+        this.projectType= pProject;
     }
 
-    /*public LocalDate getLocalDate() {
-        return dDate;
+    public LocalDate getLocalDate() {
+        return dueDate;
     }
-    public void setdDate(LocalDate dDate) {
+    public void setDueDate(LocalDate dueDate)  {
+        this.dueDate =dueDate;
 
-        this.dDate = dDate;
-    }    */
+    }
 
 }
+
+
+
+
